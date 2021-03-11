@@ -67,7 +67,7 @@ while True:
                         value_variables_fraction = str(Fraction(value_variables).limit_denominator())
                         if i == 0:
                             print("---")
-                        print(variables[i],"= odmocnina(", round(value_variables**2), ") =", value_variables, "=", value_variables_fraction)
+                        print(variables[i],"= odmocnina(", round(value_variables**2, 14), ") =", value_variables, "=", value_variables_fraction)
                         print("---")
                         i = i+1
                     else:
@@ -146,46 +146,48 @@ while True:
         
     if choose_action == "4":
         while True:
-            choose_action_2 = input("Vyberte si typ kalkulačky: \n 1. Kolik mám promile \n 2. Kolik můžu vypít \n-------------------- \n") 
+            def kalkulačka_alkoholu():
+                choose_action_2 = input("Vyberte si typ kalkulačky: \n 1. Kolik mám promile \n 2. Kolik můžu vypít \n-------------------- \n") 
 
-            if choose_action_2 == "1":
-                objem = str(input("Objem vypitého alkoholu (ml): "))
-                pocent_alkoholu = str(input("Počet procent alkoholu: "))
-                váha = str(input("Kolik vážíte (kg): "))
-                pohlaví = input("Pohlaví: \n 1. Žena \n 2. Muž \n")
-                if pohlaví == "1":
-                    konstanta_1 = str(0.6)
-                if pohlaví == "2":
-                    konstanta_1 = 0.7
-                konstanta_2 = 0.8
-                hmotnost_mezivýpočet = str(eval(objem) * eval(pocent_alkoholu))
-                konstanta_3 = 100
-                hmotnost = str(eval(hmotnost_mezivýpočet) * eval(str(konstanta_2)) / eval(str(konstanta_3)))
-                promile_mezivýpočet = str(eval(váha) * eval(str(konstanta_1)))
-                promile = str(eval(hmotnost) / eval(promile_mezivýpočet))
-                print("\n--------")
-                print("Promile:", round(eval(promile), 2))
-                print("-------- \n")
+                if choose_action_2 == "1":
+                    objem = str(input("Objem vypitého alkoholu (ml): "))
+                    pocent_alkoholu = str(input("Počet procent alkoholu: "))
+                    váha = str(input("Kolik vážíte (kg): "))
+                    pohlaví = input("Pohlaví: \n 1. Žena \n 2. Muž \n")
+                    if pohlaví == "1":
+                        konstanta_1 = str(0.6)
+                    if pohlaví == "2":
+                        konstanta_1 = 0.7
+                    konstanta_2 = 0.8
+                    hmotnost_mezivýpočet = str(eval(objem) * eval(pocent_alkoholu))
+                    konstanta_3 = 100
+                    hmotnost = str(eval(hmotnost_mezivýpočet) * eval(str(konstanta_2)) / eval(str(konstanta_3)))
+                    promile_mezivýpočet = str(eval(váha) * eval(str(konstanta_1)))
+                    promile = str(eval(hmotnost) / eval(promile_mezivýpočet))
+                    print("\n--------")
+                    print("Promile:", round(eval(promile), 2))
+                    print("-------- \n")
 
-            if choose_action_2 == "2":
-                max_promile = str(input("Maximální počet promile, kterého chci dosáhnout: "))
-                procent_alkoholu = str(input("Počet procent alkoholu: "))
-                váha = str(input("Kolik vážíte (kg): "))
-                pohlaví = input("Pohlaví: \n 1. Žena \n 2. Muž \n")
-                if pohlaví == "1":
-                    konstanta_1 = 0.6
-                if pohlaví == "2":
-                    konstanta_1 = 0.7
-                konstanta_2 = 0.8
-                konstanta_3 = 100
-                hmotnost_mezivýpočet = str(eval(váha) * eval(str(konstanta_1)))
-                hmotnost = str(eval(max_promile)*eval(hmotnost_mezivýpočet))
-                objem_mezivýpočet = str(eval(hmotnost) / eval(procent_alkoholu) / eval(str(konstanta_2)))
-                objem = str(eval(objem_mezivýpočet) * eval(str(konstanta_3)))
-                print("\n-------------")
-                print("Můžete vypít:", objem, "ml drinku")
-                print("------------- \n")
+                if choose_action_2 == "2":
+                    max_promile = str(input("Maximální počet promile, kterého chci dosáhnout: "))
+                    procent_alkoholu = str(input("Počet procent alkoholu: "))
+                    váha = str(input("Kolik vážíte (kg): "))
+                    pohlaví = input("Pohlaví: \n 1. Žena \n 2. Muž \n")
+                    if pohlaví == "1":
+                        konstanta_1 = 0.6
+                    if pohlaví == "2":
+                        konstanta_1 = 0.7
+                    konstanta_2 = 0.8
+                    konstanta_3 = 100
+                    hmotnost_mezivýpočet = str(eval(váha) * eval(str(konstanta_1)))
+                    hmotnost = str(eval(max_promile)*eval(hmotnost_mezivýpočet))
+                    objem_mezivýpočet = str(eval(hmotnost) / eval(procent_alkoholu) / eval(str(konstanta_2)))
+                    objem = str(eval(objem_mezivýpočet) * eval(str(konstanta_3)))
+                    print("\n-------------")
+                    print("Můžete vypít:", objem, "ml drinku")
+                    print("------------- \n")
 
+            kalkulačka_alkoholu()
             if input("Pokud chcete vypočítat další příklad, stiskněte ENTER. Napište \"stop\" pro ukončení kalkulačky alkoholu: \n") == "stop":
                 break
 
